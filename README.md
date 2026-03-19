@@ -6,6 +6,15 @@ ROS 2 package for detecting colored cylinders from an RGB-D point cloud.
 
 The main node is `cylinder_detector`. It subscribes to `/oakd/points` by default, publishes debug point clouds for each stage of the pipeline, and publishes `/cylinder_markers` for the final cylinder detections.
 
+
+[Bag 0 demo](assets/bag_play_0.webm)
+
+[Bag 1 demo](assets/bag_play_1.webm)
+
+
+[Bag 2 demo](assets/bag_play_2.webm)
+
+
 ---
 
 ## 1. What this repository does
