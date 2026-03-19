@@ -37,7 +37,7 @@ Make sure you have:
 - ROS 2 Jazzy
 - a workspace at `~/ros2_ws`
 - this package inside `~/ros2_ws/src/ass1_perception`
-- the assignment bag files in:
+- the add bag files:
   - `~/ros2_ws/bag/ass1/rgbd_bag_0`
   - `~/ros2_ws/bag/ass1/rgbd_bag_1`
   - `~/ros2_ws/bag/ass1/rgbd_bag_2`
