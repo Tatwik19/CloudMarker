@@ -1,6 +1,4 @@
 # CloudMarker
-A ROS 2 perception pipeline for point-cloud cylinder detection, geometric fitting, and semantic color labeling with RViz-ready visualization.
-
 
 ROS 2 package for detecting colored cylinders from an RGB-D point cloud.
 
@@ -10,7 +8,6 @@ The main node is `cylinder_detector`. It subscribes to `/oakd/points` by default
 [Bag 0 demo](assets/bag_play_0.webm)
 
 [Bag 1 demo](assets/bag_play_1.webm)
-
 
 [Bag 2 demo](assets/bag_play_2.webm)
 
@@ -46,7 +43,7 @@ Make sure you have:
 - ROS 2 Jazzy
 - a workspace at `~/ros2_ws`
 - this package inside `~/ros2_ws/src/ass1_perception`
-- the add bag files:
+- add the bag files:
   - `~/ros2_ws/bag/ass1/rgbd_bag_0`
   - `~/ros2_ws/bag/ass1/rgbd_bag_1`
   - `~/ros2_ws/bag/ass1/rgbd_bag_2`
