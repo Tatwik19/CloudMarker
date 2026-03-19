@@ -2,7 +2,6 @@
 A ROS 2 perception pipeline for point-cloud cylinder detection, geometric fitting, and semantic color labeling with RViz-ready visualization.
 
 
-
 ROS 2 package for detecting colored cylinders from an RGB-D point cloud.
 
 The main node is `cylinder_detector`. It subscribes to `/oakd/points` by default, publishes debug point clouds for each stage of the pipeline, and publishes `/cylinder_markers` for the final cylinder detections.
@@ -45,9 +44,8 @@ Make sure you have:
 
 ---
 
-## 3. Repository layout you should have
+## 3. Repository layout
 
-At minimum, your package should look like this:
 
 ```text
 ass1_perception/
@@ -63,54 +61,10 @@ ass1_perception/
 `- README.md
 ```
 
-If the `launch/` folder is missing, create it.
 
 ---
 
-## 4. One-time setup for launch files
-
-If you want to run the package with `ros2 launch`, your `setup.py` must install the launch files.
-
-Open `setup.py` and make sure it includes this:
-
-```python
-from glob import glob
-from setuptools import find_packages, setup
-
-package_name = 'ass1_perception'
-
-setup(
-    name=package_name,
-    version='0.0.0',
-    packages=find_packages(exclude=['test']),
-    data_files=[
-        ('share/ament_index/resource_index/packages',
-            ['resource/' + package_name]),
-        ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', glob('launch/*.launch.py')),
-    ],
-    install_requires=['setuptools'],
-    zip_safe=True,
-    maintainer='eva',
-    maintainer_email='eva@todo.todo',
-    description='TODO: Package description',
-    license='TODO: License declaration',
-    extras_require={
-        'test': [
-            'pytest',
-        ],
-    },
-    entry_points={
-        'console_scripts': [
-            'cylinder_detector = ass1_perception.cylinder_detector:main',
-        ],
-    },
-)
-```
-
----
-
-## 5. Build the package
+## 4. Build the package
 
 Run these commands in a terminal:
 
@@ -125,7 +79,7 @@ If the build succeeds, you are ready to run the node.
 
 ---
 
-## 6. Recommended way to run the repo
+## 5. Recommended way to run the repo
 
 This is the easiest way for a beginner.
 
@@ -165,7 +119,7 @@ Each launch file should start all of these together:
 
 ---
 
-## 7. Manual way to run the repo
+## 6. Manual way to run the repo
 
 Use this if your launch files are not ready yet.
 
@@ -223,7 +177,7 @@ rviz2
 
 ---
 
-## 8. RViz setup the first time
+## 7. RViz setup the first time
 
 When RViz opens, do this:
 
@@ -261,7 +215,7 @@ In `rqt_image_view`, select the bag image topic from the dropdown menu.
 
 ---
 
-## 9. What each stage means
+## 8. What each stage means
 
 ### `/pipeline/stage0_box`
 
@@ -391,7 +345,7 @@ Typical tuning:
 
 ---
 
-## 10. Color classification
+## 9. Color classification
 
 Cylinder geometry and cylinder color are handled separately.
 
@@ -419,7 +373,7 @@ Typical tuning:
 
 ---
 
-## 11. Helpful runtime checks
+## 10. Helpful runtime checks
 
 In the terminal running `cylinder_detector`, the node prints summary logs every few messages.
 
@@ -490,16 +444,6 @@ Try this order:
 3. verify it appears as one clean cluster in `stage3_candidates`
 4. check `cyl_radius` before changing many other cylinder parameters
 
----
-
-## 13. Suggested workflow for the assignment
-
-1. start with `rgbd_bag_0`
-2. get the pipeline stable in RViz
-3. tune crop and plane removal first
-4. then tune clustering
-5. tune cylinder fitting last
-6. move to `rgbd_bag_1` and `rgbd_bag_2` after bag 0 works reliably
 
 This order saves time because early-stage mistakes affect every later stage.
 
@@ -516,10 +460,18 @@ colcon build --packages-select ass1_perception --symlink-install
 source ~/ros2_ws/install/setup.bash
 ```
 
-### Run bag 0 with launch
+### Run bags with launch
 
 ```bash
 ros2 launch ass1_perception rgbd_bag_0.launch.py
+```
+
+```bash
+ros2 launch ass1_perception rgbd_bag_1.launch.py
+```
+
+```bash
+ros2 launch ass1_perception rgbd_bag_2.launch.py
 ```
 
 ### Run the node only
@@ -528,10 +480,18 @@ ros2 launch ass1_perception rgbd_bag_0.launch.py
 ros2 run ass1_perception cylinder_detector
 ```
 
-### Play bag 0 manually
+### Play bag2 manually
 
 ```bash
 ros2 bag play ~/ros2_ws/bag/ass1/rgbd_bag_0 --loop --rate 0.5
+```
+
+```bash
+ros2 bag play ~/ros2_ws/bag/ass1/rgbd_bag_1 --loop --rate 0.5
+```
+
+```bash
+ros2 bag play ~/ros2_ws/bag/ass1/rgbd_bag_2 --loop --rate 0.5
 ```
 
 ### Open image viewer
